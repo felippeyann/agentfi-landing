@@ -1,5 +1,9 @@
 import { SectionHeader } from './HowItWorks';
 
+// TODO(ops): hosted api.agentfi.cc is offline (Railway trial expired).
+// Update AGENTFI_API_URL in the Agent tab once backend is redeployed.
+// Track: https://github.com/felippeyann/agentfi/issues — reactivate Railway Hobby plan.
+
 const tabs = [
   {
     id: 'agent',
@@ -72,7 +76,20 @@ export default function Quickstart() {
           sub="Three paths: connect your agent via MCP, self-host the backend, or deploy to Railway."
         />
 
-        <div className="mt-16 space-y-6">
+        {/* Banner: hosted backend offline */}
+        <div className="mt-10 flex items-start gap-3 px-5 py-4 rounded-xl border border-yellow-500/20 bg-yellow-500/5 text-yellow-400 text-sm">
+          <span className="mt-0.5 shrink-0">⚠️</span>
+          <span>
+            <strong>No hosted instance yet.</strong>{' '}
+            There is no public <code className="text-yellow-300">api.agentfi.cc</code> endpoint at this time —
+            self-hosting is the only option. Follow the operator guide below or the{' '}
+            <a href="https://github.com/felippeyann/agentfi/blob/main/docs/dev-quickstart.md"
+              target="_blank" rel="noopener noreferrer"
+              className="underline hover:text-yellow-300">dev quickstart</a> to spin up a local stack in 3 minutes.
+          </span>
+        </div>
+
+        <div className="mt-6 space-y-6">
           {tabs.map((tab, i) => (
             <div key={tab.id} className="card-glass rounded-xl overflow-hidden">
               {/* Header */}
